@@ -22,20 +22,21 @@ sudo apt-get -y install autoconf automake build-essential pkg-config libv4l-0 \
 # Create a build directory
 ######################################
 mkdir build
-BUILD_DIR=`pwd`/build
+BASE_DIR=`pwd`
+BUILD_DIR=$BASE_DIR/build
 echo "Build directory is set to:" $BUILD_DIR
 
 #######################################
 # Install x264
 #######################################
-mkdir $BUILD_DIR/x264 cd $BUILD_DIR/x264
+mkdir $BUILD_DIR/x264 && cd $BASE_DIR/x264
 ./configure --enable-shared --prefix=$BUILD_DIR/x264
 make && make install
 
 #######################################
 # Install ffmpeg
 #######################################
-mkdir $BUILD_DIR/ffmpeg && cd $BUILD_DIR/ffmpeg
+mkdir $BUILD_DIR/ffmpeg && cd $BASE_DIR/ffmpeg
 ./configure --prefix=$BUILD_DIR/ffmpeg --enable-libv4l2 --enable-libx264 \
   --enable-gpl --extra-ldflags="-L$BUILD_DIR/x264/lib" \
   --extra-cflags="-I$BUILD_DIR/x264/include"
