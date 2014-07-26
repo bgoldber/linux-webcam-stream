@@ -139,10 +139,6 @@ int captureFrames(int fileDescriptor) {
     if (xioctl(fileDescriptor, VIDIOC_DQBUF, &readBuffer) == -1) {
       perror("Failed to retrieve frame from device");
     } else {
-      fwrite(
-          frameBuffers[readBuffer.index].data, readBuffer.bytesused, 1, stdout);
-
-      fflush(stderr);
       fprintf(stderr, ".");
       fflush(stdout);
     }
@@ -380,7 +376,7 @@ int main(int argc, char **argv) {
   int frameWidth = 320;
   int frameHeight = 240;
   float frameRate = 30.0f;
-  char format[] = FORMAT_MJPEG;
+  char format[] = FORMAT_H264;
 
   // Configure getopt parameters
   int arg = 0;

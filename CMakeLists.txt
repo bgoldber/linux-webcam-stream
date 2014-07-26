@@ -1,16 +1,18 @@
 cmake_minimum_required(VERSION 2.6)
 project(linux-webcam-stream)
 
-set(FFMPEG $(PROJECT_SOURCE_DIR)/build/ffmpeg)
-set(X264 $(PROJECT_SOURCE_DIR)/build/x264)
+set(FFMPEG ${PROJECT_SOURCE_DIR}/build/ffmpeg)
+set(X264 ${PROJECT_SOURCE_DIR}/build/x264)
+
+message(status, ${FFMPEG})
+message(status, ${X264})
 
 include_directories(
-  "$(FFMPEG)/include"
-  "$(X264)/include"
+  ${FFMPEG}/include
+  ${X264}/include
 )
 
-set(CMAKE_LIBRARY_PATH
-  ${CMAKE_LIBRARY_PATH}
+link_directories(
   ${FFMPEG}/lib
   ${X264}/lib
 )

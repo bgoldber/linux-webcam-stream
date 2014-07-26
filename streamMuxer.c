@@ -26,8 +26,8 @@
 #include <stdio.h>
 #include <string.h>
 
-#include <libavformat/avformat.h>
 #include <libavcodec/avcodec.h>
+#include <libavformat/avformat.h>
 
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -58,13 +58,14 @@ int initializeStreamer(void) {
   outputFormat = outputContext->oformat;
 
   if (outputFormat->video_codec != AV_CODEC_ID_NONE) {
-    videoStream = add_stream(
-        outputContext, &videoCodec, outputFormat->video_codec);
+    printf("test");
+//    videoStream = add_stream(
+//        outputContext, &videoCodec, outputFormat->video_codec);
   }
 
   if (outputFormat->audio_codec != AV_CODEC_ID_NONE) {
-    audioStream = add_stream(
-        outputContext, &audioCodec, outputFormat->audio_codec);
+//    audioStream = add_stream(
+//        outputContext, &audioCodec, outputFormat->audio_codec);
   }
 
   return 0;
